@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lernen lernen · Block 5 &amp; 6</title>
+<meta name="description" content="Gedächtnis und Lernmethoden-Werkstatt – Unterrichts-App zum Modul „Lernen lernen“.">
+<meta name="theme-color" content="#fbf8f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e1b22" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lernen lernen">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+@font-face{font-family:"Lora";src:url(fonts/lora.woff) format("woff");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Lora";src:url(fonts/lora-italic.woff) format("woff");font-weight:400 700;font-style:italic;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/poppins-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/poppins-500.woff) format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/poppins-700.woff) format("woff");font-weight:600 700;font-display:swap}
+.install{display:flex;flex-direction:column;gap:8px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;max-width:520px;margin:0 auto;text-align:center;color:var(--body);font-size:.86rem}
+.install b{color:var(--ink)}
+body{padding-top:max(20px,env(safe-area-inset-top,0px))}
+/* Layout: eine Lernspalte; oben zwei Blöcke als Reiter, darunter Unteransichten. Beamer-Ansichten mit großer Schrift, Stationslotse für das Handy. */
+:root{
+  --bg:#fbf8f6; --paper:#ffffff; --ink:#2f2a33; --body:#4f4856; --muted:#857c8c; --line:#e7dfe3;
+  --rose:#c97586; --rose-l:#f7e3e7; --sage:#5f8f72; --sage-l:#e2efe6; --lav:#8574b8; --lav-l:#ebe6f6;
+  --peach:#c98557; --peach-l:#fbeadf; --sky:#5f8fb8; --sky-l:#e2edf6; --gold:#a97f1c; --gold-l:#fbf1d6;
+  --ok:#3f805a; --ok-l:#e0f0e6; --no:#b44c62; --no-l:#f8e1e6;
+  --serif:"Lora",Georgia,"Times New Roman",serif; --sans:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1e1b22; --paper:#28242d; --ink:#f2edf3; --body:#d6cfda; --muted:#a59cab; --line:#3b3541;
+  --rose:#e3a0ae; --rose-l:#43303a; --sage:#9cc2aa; --sage-l:#2c3a31; --lav:#b6a9de; --lav-l:#353048;
+  --peach:#eeb995; --peach-l:#433429; --sky:#9fc0dd; --sky-l:#2b3743; --gold:#e1bb5c; --gold-l:#40371f;
+  --ok:#8fd0a6; --ok-l:#26392d; --no:#ec98a8; --no-l:#46282f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1e1b22; --paper:#28242d; --ink:#f2edf3; --body:#d6cfda; --muted:#a59cab; --line:#3b3541;
+  --rose:#e3a0ae; --rose-l:#43303a; --sage:#9cc2aa; --sage-l:#2c3a31; --lav:#b6a9de; --lav-l:#353048;
+  --peach:#eeb995; --peach-l:#433429; --sky:#9fc0dd; --sky-l:#2b3743; --gold:#e1bb5c; --gold-l:#40371f;
+  --ok:#8fd0a6; --ok-l:#26392d; --no:#ec98a8; --no-l:#46282f; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;position:relative;overflow-x:hidden}
+.bgshapes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bgshapes span{position:absolute;opacity:.55}
+.s1{width:280px;height:280px;border-radius:50%;background:var(--peach-l);top:-100px;right:-80px}
+.s2{width:180px;height:180px;background:var(--lav-l);transform:rotate(18deg);border-radius:28px;bottom:5%;left:-70px}
+.s3{width:120px;height:120px;border-radius:50%;background:var(--sage-l);top:45%;right:-40px}
+.s4{width:0;height:0;border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:120px solid var(--sky-l);top:20%;left:-50px;opacity:.5}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:clamp(1.6rem,4.4vw,2.3rem);font-weight:700}
+h2{font-size:1.4rem;font-weight:600}
+h3{font-size:1.08rem;font-weight:600}
+p{margin:0}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--peach);background:var(--peach-l);padding:5px 12px;border-radius:99px;width:fit-content}
+header{display:flex;flex-direction:column;gap:10px}
+.flourish{display:block;width:100%;max-width:340px;height:18px;color:var(--peach)}
+.lead{max-width:64ch}
+.topnav{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.topnav button{font:inherit;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;color:var(--body);display:flex;flex-direction:column;gap:2px}
+.topnav button b{font-family:var(--serif);font-size:1.08rem;color:var(--ink)}
+.topnav button[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.subnav{display:flex;flex-wrap:wrap;gap:8px}
+.subnav button{font:inherit;font-size:.86rem;font-weight:500;background:transparent;border:1px solid var(--line);border-radius:99px;padding:7px 14px;cursor:pointer;color:var(--body)}
+.subnav button[aria-current="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--lav);outline-offset:2px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px clamp(16px,3.5vw,30px);display:flex;flex-direction:column;gap:16px}
+.task{background:var(--gold-l);border-radius:14px;padding:12px 14px;color:var(--ink);font-size:.92rem}
+.task b{color:var(--gold)}
+.btn{font:inherit;font-weight:600;font-size:.9rem;border-radius:99px;padding:10px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.small{padding:6px 12px;font-size:.82rem}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.note{font-size:.82rem;color:var(--muted)}
+.src{font-size:.78rem;color:var(--muted)}
+.feedback{border-radius:14px;padding:12px 14px;font-size:.94rem;color:var(--ink)}
+.feedback.ok{background:var(--ok-l)} .feedback.info{background:var(--sky-l)} .feedback.warm{background:var(--rose-l)}
+.chip{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.06em;border-radius:99px;padding:3px 10px;background:var(--sage-l);color:var(--sage)}
+.toolbar{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.b6only{display:none!important}
+body.b6 .b6only{display:inline-block!important}
+body.b6 .topnav,body.b6 #v-merktest,body.b6 #v-rallye,body.b6 #v-kurve{display:none!important}
+.toolbar .back{margin-right:auto;color:var(--ink);border-color:var(--ink)}
+.toolbar button{font:inherit;font-size:.78rem;background:transparent;border:1px solid var(--line);border-radius:99px;padding:5px 12px;color:var(--muted);cursor:pointer}
+
+/* Beamer-Bühne */
+.stage{border-radius:18px;background:var(--bg);border:1px solid var(--line);min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 16px;text-align:center}
+.bigword{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:clamp(2rem,8vw,4.2rem);line-height:1.1;overflow-wrap:anywhere}
+.clock{font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,9vw,4.6rem);color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.clock.warn{color:var(--rose)}
+.wordgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+.wordgrid span{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 6px;font-weight:600;color:var(--ink);font-size:clamp(.82rem,2.4vw,1.1rem);overflow-wrap:anywhere}
+.wordgrid span .n{display:block;font-size:.7rem;color:var(--muted);font-weight:500}
+.wordgrid span.edge{background:var(--lav-l);border-color:var(--lav)}
+@media (max-width:480px){.wordgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.seg button{font:inherit;font-size:.82rem;padding:6px 12px;border:0;background:transparent;color:var(--body);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--lav-l);color:var(--ink);font-weight:600}
+
+/* Rallye */
+.situation{font-family:var(--serif);font-size:clamp(1.15rem,3.4vw,1.6rem);color:var(--ink);line-height:1.4;max-width:40ch}
+.corners{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
+.corners.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:560px){.corners{grid-template-columns:repeat(2,minmax(0,1fr))}.corners.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.corner{border-radius:14px;padding:12px 8px;background:var(--paper);border:2px solid var(--line);color:var(--ink);font-weight:600;font-size:.9rem;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.25}
+.corner .num{font-family:var(--serif);font-size:1.5rem;color:var(--muted)}
+.corner small{font-weight:400;font-size:.74rem;color:var(--muted)}
+.corner.hit{border-color:var(--ok);background:var(--ok-l)}
+.dots{display:flex;gap:6px;justify-content:center}
+.dots i{width:22px;height:6px;border-radius:3px;background:var(--line)}
+.dots i.done{background:var(--peach)} .dots i.now{background:var(--ink)}
+
+/* Kurve */
+.chartbox{width:100%;overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.toggles button{font:inherit;font-size:.85rem;border-radius:99px;padding:7px 14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.toggles button[aria-pressed="true"]{background:var(--sage-l);border-color:var(--sage);font-weight:600}
+
+/* Werkstatt */
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.rules{grid-template-columns:1fr}}
+.rule{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.rule .ic{flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--paper);font-size:.9rem}
+.rule p{font-size:.9rem;color:var(--ink)}
+.roundbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.stations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.stations{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:380px){.stations{grid-template-columns:1fr}}
+.stcard{font:inherit;text-align:left;cursor:pointer;border-radius:16px;padding:14px;border:1px solid var(--line);background:var(--paper);color:var(--body);display:flex;flex-direction:column;gap:6px}
+.stcard .no{font-family:var(--serif);font-weight:700;font-size:1.6rem;line-height:1}
+.stcard b{font-family:var(--serif);font-size:1.02rem;color:var(--ink);line-height:1.25}
+.stcard span{font-size:.8rem}
+.sthead{display:flex;gap:14px;align-items:flex-start}
+.sthead .no{flex:0 0 54px;height:54px;border-radius:16px;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.7rem;color:var(--paper)}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.need{font-size:.88rem;background:var(--bg);border-radius:12px;padding:10px 12px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;background:var(--paper)}
+.step .sn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.step.active{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.step.active .sn{background:var(--ink);color:var(--paper)}
+.step.done{opacity:.6}
+.step.done .sn{background:var(--ok-l);border-color:var(--ok);color:var(--ok)}
+.step h3{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.step h3 .min{font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--muted)}
+.step p{font-size:.92rem}
+.step .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.step .t{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums;min-width:4ch}
+.helper{margin-top:10px;background:var(--lav-l);border-radius:12px;padding:10px 12px;color:var(--ink);font-size:.9rem;display:flex;flex-direction:column;gap:8px}
+.helper .term{font-family:var(--serif);font-size:1.5rem;font-weight:700}
+.why{background:var(--sky-l);border-radius:14px;padding:12px 14px;font-size:.88rem;color:var(--ink)}
+.more{background:var(--gold-l);border-radius:14px;padding:12px 14px;font-size:.88rem;color:var(--ink)}
+.gong{background:var(--rose-l);border-radius:14px;padding:14px;color:var(--ink);font-weight:500}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem}
+th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top;color:var(--ink)}
+th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.c{text-align:center;font-size:1.05rem}
+.lvl{display:inline-block;font-size:.72rem;font-weight:600;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.lvl.h{background:var(--ok-l);color:var(--ok)} .lvl.m{background:var(--gold-l);color:var(--gold)} .lvl.n{background:var(--no-l);color:var(--no)}
+footer{font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+@media (prefers-reduced-motion:no-preference){.step,.corner,.stcard{transition:background .2s,border-color .2s,opacity .2s}}
+</style>
+
+</head>
+<body>
+<div class="bgshapes" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span></div>
+<main>
+  <header>
+    <span class="badge" id="hd-badge">Lernen lernen · Block 5</span>
+    <h1 id="hd-title">Gedächtnis</h1>
+    <svg class="flourish" viewBox="0 0 340 18" fill="none" aria-hidden="true"><path d="M2 9 C 60 1, 100 17, 170 9 S 280 1, 338 9" stroke="currentColor" stroke-width="1.2"/><circle cx="170" cy="9" r="3.2" fill="currentColor"/><circle cx="20" cy="7" r="1.6" fill="currentColor"/><circle cx="320" cy="7" r="1.6" fill="currentColor"/></svg>
+  </header>
+
+  <div class="topnav" role="tablist" aria-label="Blöcke">
+    <button role="tab" id="tb5" data-go="merktest"><span class="note">Block 5 · am Beamer</span><b>Gedächtnis</b></button>
+    <button role="tab" id="tb6" data-go="werkstatt"><span class="note">Block 6 · Beamer &amp; Handy</span><b>Methodenwerkstatt</b></button>
+  </div>
+  <div class="subnav" id="subnav"></div>
+  <div class="toolbar"><button class="back b6only" data-go="merktest">← Zu Block 5 · Gedächtnis</button><button id="sound" aria-pressed="true">Gong an</button></div>
+
+  <!-- ===== Block 5: Merktest ===== -->
+  <section class="panel view" id="v-merktest" hidden>
+    <div><span class="chip">Einstieg</span></div>
+    <h2>Der Merktest</h2>
+    <div class="task"><b>Ansage:</b> „Gleich erscheinen 15 Begriffe aus der Pflege. Schreibt nichts mit, schaut nur hin. Danach schreibt ihr alles auf, was ihr noch wisst.“</div>
+    <div class="row"><span class="note">Darstellung:</span>
+      <div class="seg" role="group" aria-label="Darstellung"><button id="mt-seq" aria-pressed="true">Nacheinander (2 s pro Wort)</button><button id="mt-all" aria-pressed="false">Alle auf einmal (30 s)</button></div>
+    </div>
+    <div class="stage" id="mt-stage"><p class="note">Bereit? Die Zeit läuft 30 Sekunden.</p><button class="btn" id="mt-start">Merktest starten</button></div>
+    <div id="mt-after" hidden class="row">
+      <button class="btn" id="mt-write">90 Sekunden zum Aufschreiben</button>
+      <button class="btn ghost" id="mt-reveal">Liste aufdecken</button>
+    </div>
+    <div id="mt-fb"></div>
+  </section>
+
+  <!-- ===== Block 5: Rallye ===== -->
+  <section class="panel view" id="v-rallye" hidden>
+    <div><span class="chip">Gedächtnis-Rallye · 15 Min.</span></div>
+    <h2 id="ra-title">Runde 1 · Wo steckt die Information?</h2>
+    <div class="seg" role="group" aria-label="Runde"><button data-r="0" aria-pressed="true">Runde 1</button><button data-r="1" aria-pressed="false">Runde 2</button><button data-r="2" aria-pressed="false">Runde 3</button></div>
+    <div class="task" id="ra-task"></div>
+    <div class="stage" id="ra-stage"></div>
+    <div class="row" id="ra-ctl"></div>
+    <div id="ra-fb"></div>
+  </section>
+
+  <!-- ===== Block 5: Vergessenskurve ===== -->
+  <section class="panel view" id="v-kurve" hidden>
+    <div><span class="chip">Vergessen &amp; Wiederholen</span></div>
+    <h2>Die Vergessenskurve</h2>
+    <p>Ohne Wiederholen fällt die Kurve in den ersten Tagen steil ab. Schalte die Wiederholungen nacheinander dazu und beobachte, was passiert.</p>
+    <div class="toggles" role="group" aria-label="Wiederholungen">
+      <button data-d="1" aria-pressed="false">nach 1 Tag</button>
+      <button data-d="3" aria-pressed="false">nach 3 Tagen</button>
+      <button data-d="7" aria-pressed="false">nach 7 Tagen</button>
+    </div>
+    <div class="chartbox"><svg id="curve" viewBox="0 0 640 300" role="img" aria-label="Modellhafte Vergessenskurve über 14 Tage"></svg></div>
+    <div class="feedback info" id="kv-fb">Vergessen ist normal. Es hilft dem Gehirn, Wichtiges von Unwichtigem zu trennen. Jedes Wiederholen aus dem Kopf hebt die Kurve wieder an, und danach fällt sie langsamer.</div>
+    <div class="rules">
+      <div class="rule"><span class="ic" style="background:var(--sky)">S</span><p><b>Strategie</b> = der Plan<br><span class="note">verteilt wiederholen</span></p></div>
+      <div class="rule"><span class="ic" style="background:var(--peach)">M</span><p><b>Methode</b> = das Vorgehen<br><span class="note">Karteikarten</span></p></div>
+      <div class="rule"><span class="ic" style="background:var(--lav)">T</span><p><b>Technik</b> = der Handgriff<br><span class="note">Leitner-Box</span></p></div>
+      <div class="rule"><span class="ic" style="background:var(--sage)">!</span><p><b>Ausblick:</b> In Block 6 probiert ihr die Methoden selbst aus.<br><span class="note">Bringt eure Unterlagen zu einem Klausurthema mit.</span></p></div>
+    </div>
+    <p class="src">Modellhafte Darstellung, keine Messdaten. Wie schnell wir vergessen, hängt stark vom Stoff ab. Ebbinghaus (1885); Nachbildung der Kurve: Murre &amp; Dros (2015).</p>
+  </section>
+
+  <!-- ===== Block 6: Start ===== -->
+  <section class="panel view" id="v-werkstatt" hidden>
+    <div><span class="chip">Lernmethoden-Werkstatt · 90 Min.</span></div>
+    <h2>Heute ist Werkstatt</h2>
+    <p>Sechs Stationen, sechs Lernmethoden. An jeder arbeitet ihr mit euren eigenen Unterlagen. Ihr lernt also nicht nur Methoden kennen, sondern gleich für eure Klausur.</p>
+    <div class="rules">
+      <div class="rule"><span class="ic" style="background:var(--peach)">3</span><p>Mit eurem Tandem besucht ihr <b>3 von 6 Stationen</b>. Welche, entscheidet ihr.</p></div>
+      <div class="rule"><span class="ic" style="background:var(--lav)">◆</span><p><b>Mindestens eine Station</b> passt nicht zu euren Vorlieben. Schaut auf die Rückseite eures Lernvorlieben-Checks.</p></div>
+      <div class="rule"><span class="ic" style="background:var(--sky)">≤3</span><p>Höchstens <b>3 Tandems pro Station</b> und Runde. Tragt euch im Belegungsplan ein.</p></div>
+      <div class="rule"><span class="ic" style="background:var(--sage)">?</span><p>Leitfrage an jeder Station: <b>Wofür taugt diese Methode?</b> Beim Gong kreuzt ihr im Methodenkoffer S. 16 an.</p></div>
+    </div>
+    <h3>Rundenuhr für den Beamer</h3>
+    <div class="stage">
+      <div class="note" id="rd-label">Runde wählen und starten</div>
+      <div class="clock" id="rd-clock">14:00</div>
+      <div class="note" id="rd-hint">12 Minuten arbeiten · Gong · 2 Minuten Matrix und Wechsel</div>
+      <div class="roundbar">
+        <button class="btn" data-round="1">Runde 1</button>
+        <button class="btn" data-round="2">Runde 2</button>
+        <button class="btn" data-round="3">Runde 3</button>
+        <button class="btn ghost" id="rd-stop">Stopp</button>
+      </div>
+    </div>
+    <h3>Die sechs Stationen</h3>
+    <p class="note">Tippt auf eure Station. Die Anleitung führt euch Schritt für Schritt mit Zeit durch die Methode.</p>
+    <div class="stations" id="stgrid"></div>
+  </section>
+
+  <!-- ===== Block 6: Station ===== -->
+  <section class="panel view" id="v-station" hidden></section>
+
+  <!-- ===== Block 6: Matrix ===== -->
+  <section class="panel view" id="v-matrix" hidden>
+    <div><span class="chip">Museumsgang &amp; Reflexion</span></div>
+    <h2>Wofür taugt welche Methode?</h2>
+    <div class="task"><b>Erst eure Einschätzung:</b> Füllt gemeinsam die Methoden-Matrix auf dem Flipchart mit Klebepunkten. Deckt danach auf, was die Forschung dazu sagt.</div>
+    <button class="btn" id="mx-reveal">Forschung aufdecken</button>
+    <div id="mx-box" hidden>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Station · Methode</th><th>Überblick</th><th>Verstehen</th><th>Behalten</th><th>Wiederholen</th><th>Allein</th><th>Mit Abruf-Schritt</th></tr></thead>
+        <tbody id="mx-body"></tbody>
+      </table></div>
+      <div class="feedback info" style="margin-top:12px"><b>Das Muster:</b> Methoden, die sich allein schwach zeigen, werden stärker, sobald ein Schritt „aus dem Kopf“ dazukommt. Deshalb hatte jede Station so einen Schritt. Er fühlt sich mühsam an, und genau diese Mühe hilft beim Behalten.</div>
+      <p class="src" style="margin-top:8px">Nutzen nach Dunlosky et al. (2013); Mind-/Concept-Maps: Schroeder et al. (2018); Markieren und Zusammenfassen: Miyatsu et al. (2018); Zeichnen: Wammes et al. (2016), Fiorella &amp; Zhang (2018); Abrufen: Roediger &amp; Karpicke (2006), Adesope et al. (2017). Die Kreuze in den ersten vier Spalten sind eine Einordnung, keine Messung.</p>
+    </div>
+    <div class="feedback warm"><b>Abschluss für den Werkzeugkoffer:</b> Welche zwei Methoden nehme ich für meine nächste Klausur, und warum genau diese?</div>
+    <p class="note">Wirkungs-Check in Block 7: „Was weißt du noch von deinen drei Stationen?“</p>
+  </section>
+
+  <div class="install" id="install">
+    <b>Als App auf dem Handy speichern</b>
+    <span id="inst-text">iPhone: in Safari unten auf „Teilen“ tippen, dann „Zum Home-Bildschirm“. Android: im Chrome-Menü (⋮) „App installieren“ oder „Zum Startbildschirm hinzufügen“.</span>
+    <button class="btn small" id="inst-btn" hidden>App installieren</button>
+    <span class="note" id="inst-off">Nach dem ersten Öffnen funktioniert die App auch ohne Internet.</span>
+  </div>
+  <footer>
+    <svg class="flourish" viewBox="0 0 340 18" fill="none" aria-hidden="true" style="max-width:200px"><path d="M2 9 C 60 1, 100 17, 170 9 S 280 1, 338 9" stroke="currentColor" stroke-width="1"/></svg>
+    <span>Jasmin Klug · Praxisanleiterin · Modul „Lernen lernen“ (LS 1.1.2)</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const fmt=s=>{s=Math.max(0,Math.ceil(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+
+/* ---------- Ton & Wachhalten ---------- */
+let soundOn=true,actx=null;
+$('#sound').onclick=function(){soundOn=!soundOn;this.setAttribute('aria-pressed',soundOn);this.textContent=soundOn?'Gong an':'Gong aus';unlock()};
+function unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume()}catch(e){}}
+document.addEventListener('pointerdown',unlock,{once:true});
+function gong(times){if(!soundOn)return;try{unlock();if(!actx)return;for(let k=0;k<(times||1);k++){const t0=actx.currentTime+k*0.9;[523.25,784.0,1046.5].forEach((f,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(0.22/(i+1),t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+2.4);o.connect(g).connect(actx.destination);o.start(t0);o.stop(t0+2.5)})}}catch(e){}}
+let lock=null;async function wake(on){try{if(on&&!lock&&navigator.wakeLock){lock=await navigator.wakeLock.request('screen');lock.addEventListener('release',()=>lock=null)}else if(!on&&lock){await lock.release();lock=null}}catch(e){}}
+
+/* ---------- Timer ---------- */
+function Timer(sec,onTick,onEnd){let end=0,id=null;return{start(){end=Date.now()+sec*1000;clearInterval(id);wake(true);const tick=()=>{const r=(end-Date.now())/1000;onTick(r);if(r<=0){clearInterval(id);id=null;wake(false);onEnd&&onEnd()}};tick();id=setInterval(tick,250)},stop(){clearInterval(id);id=null;wake(false)},get running(){return!!id}}}
+let active=[];function stopAll(){active.forEach(t=>t.stop());active=[]}
+
+/* ---------- Navigation ---------- */
+const SUB={b5:[['merktest','Merktest'],['rallye','Gedächtnis-Rallye'],['kurve','Vergessenskurve']],b6:[['werkstatt','Start & Rundenuhr'],['station1','1'],['station2','2'],['station3','3'],['station4','4'],['station5','5'],['station6','6'],['matrix','Matrix & Abschluss']]};
+const VALID=/^(merktest|rallye|kurve|werkstatt|matrix|station[1-6])$/;let cur='';
+function go(v){
+  if(!VALID.test(v))v='merktest';
+  cur=v;
+  document.body.classList.toggle('b6',v!=='merktest'&&v!=='rallye'&&v!=='kurve');
+  $('#hd-title').textContent=document.body.classList.contains('b6')?'Methodenwerkstatt':'Gedächtnis';
+  $('#hd-badge').textContent=document.body.classList.contains('b6')?'Lernen lernen · Block 6':'Lernen lernen · Block 5';
+  const blk=SUB.b5.some(x=>x[0]===v)?'b5':'b6';
+  $('#tb5').setAttribute('aria-selected',blk==='b5');$('#tb6').setAttribute('aria-selected',blk==='b6');
+  $('#subnav').innerHTML=SUB[blk].map(([k,l])=>`<button data-go="${k}" aria-current="${k===v}" ${/^\d$/.test(l)?`aria-label="Station ${l}"`:''}>${/^\d$/.test(l)?'Station '+l:l}</button>`).join('');
+  document.querySelectorAll('.view').forEach(s=>s.hidden=true);
+  if(v.startsWith('station')){renderStation(+v.slice(7));$('#v-station').hidden=false}else $('#v-'+v).hidden=false;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){e.preventDefault();if(!b.closest('#v-werkstatt')&&!b.closest('#v-station'))stopStationTimers();go(b.dataset.go);if(b.closest('.stations')||b.closest('#v-station'))window.scrollTo({top:0})}});
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(VALID.test(h)&&h!==cur)go(h)});
+
+/* ---------- Merktest ---------- */
+const WORDS=["Blutdruck","Lagerung","Händedesinfektion","Puls","Pflegeanamnese","Infusion","Sturzprophylaxe","Mobilisation","Thermometer","Übergabe","Schmerzskala","Atmung","Waschschüssel","Dokumentation","Rollstuhl"];
+let mtMode='seq';
+$('#mt-seq').onclick=()=>{mtMode='seq';$('#mt-seq').setAttribute('aria-pressed',true);$('#mt-all').setAttribute('aria-pressed',false)};
+$('#mt-all').onclick=()=>{mtMode='all';$('#mt-all').setAttribute('aria-pressed',true);$('#mt-seq').setAttribute('aria-pressed',false)};
+function mtReset(){$('#mt-stage').innerHTML='<p class="note">Bereit? Die Zeit läuft 30 Sekunden.</p><button class="btn" id="mt-start">Merktest starten</button>';$('#mt-start').onclick=mtStart;$('#mt-after').hidden=true;$('#mt-fb').innerHTML=''}
+function mtStart(){
+  stopAll();const st=$('#mt-stage');$('#mt-fb').innerHTML='';$('#mt-after').hidden=true;
+  const done=()=>{gong(1);st.innerHTML='<div class="bigword" style="font-size:clamp(1.6rem,6vw,3rem)">Stifte raus!</div><p>Schreibt alle Begriffe auf, an die ihr euch erinnert. Die Reihenfolge ist egal.</p>';$('#mt-after').hidden=false};
+  if(mtMode==='seq'){
+    st.innerHTML='<div class="note" id="mt-c"></div><div class="bigword" id="mt-w"></div>';
+    const t=Timer(30,r=>{const i=Math.min(14,Math.floor((30-r)/2));$('#mt-w').textContent=WORDS[i];$('#mt-c').textContent=`Begriff ${i+1} von 15`},done);active.push(t);t.start();
+  } else {
+    st.innerHTML='<div class="clock" id="mt-c" style="font-size:2rem"></div><div class="wordgrid">'+WORDS.map(w=>`<span>${w}</span>`).join('')+'</div>';
+    const t=Timer(30,r=>{$('#mt-c').textContent=fmt(r)},done);active.push(t);t.start();
+  }
+}
+$('#mt-start').onclick=mtStart;
+$('#mt-write').onclick=()=>{stopAll();const st=$('#mt-stage');st.innerHTML='<div class="note">Aufschreiben</div><div class="clock" id="mt-wc">01:30</div>';const t=Timer(90,r=>{const c=$('#mt-wc');if(c){c.textContent=fmt(r);c.classList.toggle('warn',r<=10)}},()=>gong(1));active.push(t);t.start()};
+$('#mt-reveal').onclick=()=>{stopAll();
+  $('#mt-stage').innerHTML='<div class="wordgrid">'+WORDS.map((w,i)=>`<span class="${mtMode==='seq'&&(i<3||i>11)?'edge':''}"><span class="n">${i+1}</span>${w}</span>`).join('')+'</div>';
+  $('#mt-fb').innerHTML=mtMode==='seq'
+   ?`<div class="feedback info"><b>Zählt nach:</b> Wie viele von 15 habt ihr? Meist sind es etwa 5 bis 9. Viele erinnern sich besonders an die <b>ersten</b> Begriffe (sie wurden innerlich schon wiederholt und landen eher im Langzeitgedächtnis) und an die <b>letzten</b> (sie sind noch im Arbeitsgedächtnis). Das nennt man den Positionseffekt. Hat jemand ein Wort gemerkt, weil es eine Geschichte dazu gab?<p class="src" style="margin-top:6px">Glanzer &amp; Cunitz (1966); Arbeitsgedächtnis-Kapazität etwa 4 Einheiten: Cowan (2001). Der Effekt zeigt sich über viele Menschen, nicht bei jeder Person.</p></div>`
+   :`<div class="feedback info"><b>Zählt nach:</b> Wie viele von 15 habt ihr? Meist sind es etwa 5 bis 9. Welche Wörter blieben hängen, und warum? Oft sind es die, zu denen man ein Bild oder eine Erfahrung hat. Unser Arbeitsgedächtnis fasst nur wenig gleichzeitig.<p class="src" style="margin-top:6px">Cowan (2001): etwa 4 Einheiten. Tipp: Mit „Nacheinander“ wird zusätzlich der Positionseffekt sichtbar.</p></div>`;
+  const b=document.createElement('div');b.className='row';b.innerHTML='<button class="btn ghost" id="mt-again">Zurücksetzen</button>';$('#mt-fb').appendChild(b);$('#mt-again').onclick=mtReset;
+};
+
+/* ---------- Rallye ---------- */
+const R1=[["Die Kollegin nennt dir bei der Übergabe eine Zimmernummer. Du sprichst sie innerlich nach, während du zum Zimmer läufst.",1,"Durch innerliches Wiederholen bleibt sie auf dem „Arbeitstisch“."],
+["Deine eigene Handynummer.",2,"Oft abgerufen, sicher gespeichert."],
+["Du hast die Zimmernummer im Kopf. Da klingelt ein Patient und spricht dich an – und die Nummer ist weg.",3,"Das Arbeitsgedächtnis ist voll, Neues verdrängt Altes. Tipp: kurz notieren!"],
+["Im Nebenzimmer piept ein Perfusor. Du hast es nicht bewusst bemerkt, aber einen Moment lang war der Ton trotzdem „da“.",0,"Ohne Aufmerksamkeit geht es nicht weiter (Block 3)."],
+["Den Ablauf der hygienischen Händedesinfektion hast du so oft geübt, dass er ohne Nachdenken klappt.",2,"„Wissen, wie“: das prozedurale Gedächtnis."],
+["Du hast gerade den Blutdruck gemessen und bist auf dem Weg zur Dokumentation.",1,"Darum dokumentieren wir sofort und nicht aus dem Kopf am Schichtende."]];
+const CORNERS=["Sensorisches Register","Arbeitsgedächtnis","Langzeitgedächtnis","Verloren"];
+const R2=[["Du planst, in welcher Reihenfolge du deine drei Patientinnen und Patienten versorgst.",[0],"Planen ist Chefsache."],
+["Heute lernst du zum ersten Mal die Normwerte für den Puls. Damit sie bleiben, müssen sie „abgelegt“ werden.",[1],"Hippi überführt Neues ins Langzeitgedächtnis."],
+["Kurz vor der Klausur: Herzklopfen, der Kopf ist leer.",[2,0],"Amy schlägt Alarm, und Kurt wird gebremst. Beide Antworten sind richtig, wenn sie begründet sind."],
+["Nachts im Schlaf wird das Gelernte des Tages noch einmal abgespielt.",[1],"Konsolidierung, siehe Fachtext Schlaf."],
+["An den Tag, an dem sich eine Patientin herzlich bei dir bedankt hat, erinnerst du dich noch lange.",[2,1],"Amy mit Hippi: Gefühle markieren „Das ist wichtig, merk es dir.“"],
+["Du rechnest eine Medikamentendosis im Kopf aus und hältst die Zwischenergebnisse fest.",[0],"Arbeitsgedächtnis in Aktion, und ein guter Grund, nachzurechnen."]];
+const TRIO=[["Kurt","Kortex, der Chef: planen, denken, Arbeitsgedächtnis"],["Hippi","Hippocampus: legt Neues ab"],["Amy","Amygdala: bewertet Gefühle, schlägt Alarm"]];
+let raRound=0,raIdx=0;
+const raTasks=["<b>Ansage:</b> Steht auf, gern mit eurem Tandem. Geht in die Ecke, in der die Information gerade steckt. Ihr habt 10 Sekunden. Wer nicht laufen mag, zeigt die Ecke mit 1–4 Fingern.",
+"<b>Ansage:</b> An euren Gruppentischen liegen drei Karten: Kurt, Hippi und Amy. 20 Sekunden zum Einigen, auf „drei, zwei, eins“ hält jede Gruppe ihre Karte hoch. Einen Punkt gibt es für die beste Begründung.",
+"<b>Ansage:</b> Ihr habt heute die Normwerte für den Puls gelernt. Ohne etwas zu tun, ist in einer Woche das meiste davon weg. 60 Sekunden: Was tut ihr, damit sie im Langzeitgedächtnis ankommen?"];
+const raTitles=["Runde 1 · Wo steckt die Information?","Runde 2 · Wer ist am Werk?","Runde 3 · Rette die Information!"];
+document.querySelectorAll('#v-rallye .seg button').forEach(b=>b.onclick=()=>{raRound=+b.dataset.r;raIdx=0;document.querySelectorAll('#v-rallye .seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawRa()});
+function drawRa(){
+  stopAll();$('#ra-title').textContent=raTitles[raRound];$('#ra-task').innerHTML=raTasks[raRound];$('#ra-fb').innerHTML='';
+  const st=$('#ra-stage'),ctl=$('#ra-ctl');
+  if(raRound===2){
+    st.innerHTML='<div class="situation">Puls-Normwerte: Wie rettet ihr sie ins Langzeitgedächtnis?</div><div class="clock" id="ra-c">01:00</div>';
+    ctl.innerHTML='<button class="btn" id="ra-go">60 Sekunden starten</button><button class="btn ghost" id="ra-show">Was die Forschung sagt</button>';
+    $('#ra-go').onclick=()=>{stopAll();const t=Timer(60,r=>{const c=$('#ra-c');c.textContent=fmt(r);c.classList.toggle('warn',r<=10)},()=>gong(1));active.push(t);t.start()};
+    $('#ra-show').onclick=()=>{$('#ra-fb').innerHTML='<div class="feedback info">Sammelt erst alle Ideen an der Tafel. Dann ordnen: Was davon ist <b>Wiederholen</b> (verteilt, nach 1, 3, 7 Tagen), was <b>Abrufen</b> (sich selbst abfragen), was <b>Verknüpfen</b> (mit Erfahrung oder Bild verbinden)? Abrufen und verteiltes Wiederholen haben in der Forschung den größten Nutzen.<p class="src" style="margin-top:6px">Dunlosky et al. (2013); Roediger &amp; Karpicke (2006). Weiter geht es mit der Vergessenskurve.</p></div>'};
+    return;
+  }
+  const list=raRound===0?R1:R2,it=list[raIdx],secs=raRound===0?10:20;
+  const opts=raRound===0?CORNERS.map((c,i)=>[c,`Ecke ${i+1}`]):TRIO;
+  st.innerHTML=`<div class="dots">${list.map((_,i)=>`<i class="${i<raIdx?'done':i===raIdx?'now':''}"></i>`).join('')}</div>
+  <div class="situation">${it[0]}</div><div class="clock" id="ra-c">${fmt(secs)}</div>
+  <div class="corners ${raRound===1?'three':''}">${opts.map((o,i)=>`<div class="corner" data-i="${i}"><span class="num">${raRound===0?i+1:o[0][0]}</span>${o[0]}<small>${o[1]}</small></div>`).join('')}</div>`;
+  ctl.innerHTML=`<button class="btn" id="ra-go">${secs} Sekunden starten</button><button class="btn ghost" id="ra-show">Auflösen</button><button class="btn ghost" id="ra-next">${raIdx<list.length-1?'Nächste Situation':'Runde beenden'}</button>`;
+  $('#ra-go').onclick=()=>{stopAll();const t=Timer(secs,r=>{const c=$('#ra-c');c.textContent=fmt(r);c.classList.toggle('warn',r<=3)},()=>gong(1));active.push(t);t.start()};
+  $('#ra-show').onclick=()=>{stopAll();const right=raRound===0?[it[1]]:it[1];st.querySelectorAll('.corner').forEach(c=>c.classList.toggle('hit',right.includes(+c.dataset.i)));
+    $('#ra-fb').innerHTML=`<div class="feedback ok"><b>${right.map(i=>opts[i][0]).join(' und ')}.</b> ${it[2]}</div><p class="note" style="margin-top:6px">Erst begründen lassen, dann auflösen. Falsche Ecken sind die spannendsten: „Was hat euch hierher geführt?“</p>`};
+  $('#ra-next').onclick=()=>{if(raIdx<list.length-1){raIdx++;drawRa()}else{const nb=document.querySelectorAll('#v-rallye .seg button')[raRound+1];nb&&nb.click()}};
+}
+drawRa();
+
+/* ---------- Vergessenskurve ---------- */
+const reviews=new Set();
+document.querySelectorAll('#v-kurve .toggles button').forEach(b=>b.onclick=()=>{const d=+b.dataset.d;reviews.has(d)?reviews.delete(d):reviews.add(d);b.setAttribute('aria-pressed',reviews.has(d));drawCurve()});
+function retention(t){const rs=[...reviews].sort((a,b)=>a-b);let last=0,S=1.2;for(const d of rs){if(t>=d){last=d;S*=2.6}}return 100*Math.exp(-(t-last)/S)*0.62+38*Math.exp(-(t-last)/(S*6))}
+function drawCurve(){
+  const W=640,H=300,L=52,R=16,T=18,B=44,pw=W-L-R,ph=H-T-B,x=d=>L+d/14*pw,y=v=>T+(1-v/100)*ph;
+  let g='';
+  [0,25,50,75,100].forEach(v=>{g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="12" fill="var(--muted)" font-family="Poppins,system-ui,sans-serif">${v} %</text>`});
+  [0,1,3,7,14].forEach(d=>{g+=`<text x="${x(d)}" y="${H-B+20}" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Poppins,system-ui,sans-serif">${d===0?'heute':'Tag '+d}</text>`});
+  g+=`<text x="${L}" y="${H-6}" font-size="11" fill="var(--muted)" font-family="Poppins,system-ui,sans-serif">Zeit seit dem Lernen</text>`;
+  let base='',cur='';
+  for(let i=0;i<=280;i++){const t=i/20;const vb=100*Math.exp(-t/1.2)*0.62+38*Math.exp(-t/7.2);base+=(i?'L':'M')+x(t).toFixed(1)+','+y(vb).toFixed(1)}
+  if(reviews.size){let prev=null;for(let i=0;i<=280;i++){const t=i/20;const isJump=[...reviews].some(d=>Math.abs(t-d)<1e-9);if(isJump&&prev!==null){cur+='L'+x(t).toFixed(1)+','+y(prev).toFixed(1)}const v=retention(t);cur+=(i?'L':'M')+x(t).toFixed(1)+','+y(v).toFixed(1);prev=v}}
+  g+=`<path d="${base}" fill="none" stroke="var(--rose)" stroke-width="${reviews.size?2:3}" ${reviews.size?'stroke-dasharray="5 5" opacity=".7"':''}/>`;
+  if(reviews.size){g+=`<path d="${cur}" fill="none" stroke="var(--sage)" stroke-width="3"/>`;[...reviews].forEach(d=>{g+=`<circle cx="${x(d)}" cy="${y(100)}" r="5" fill="var(--sage)"/>`})}
+  const endB=100*Math.exp(-14/1.2)*0.62+38*Math.exp(-14/7.2),endC=retention(14);
+  g+=`<text x="${W-R}" y="${y(endB)-8}" text-anchor="end" font-size="12" fill="var(--rose)" font-family="Poppins,system-ui,sans-serif" font-weight="600">ohne Wiederholen</text>`;
+  if(reviews.size)g+=`<text x="${W-R}" y="${y(endC)-8}" text-anchor="end" font-size="12" fill="var(--sage)" font-family="Poppins,system-ui,sans-serif" font-weight="600">mit ${reviews.size}× Wiederholen</text>`;
+  $('#curve').innerHTML=g;
+  $('#kv-fb').innerHTML=reviews.size===3?'<b>Nach drei Wiederholungen fällt die Kurve kaum noch.</b> Darum der Rhythmus 1 · 3 · 7 Tage, am besten aus dem Kopf statt durch Wiederlesen. Das Abrufblatt im Methodenkoffer (S. 4–5) hilft beim Planen.':reviews.size?'Jedes Wiederholen hebt die Kurve wieder an, und danach fällt sie langsamer. Schalte die nächste Wiederholung dazu.':'Vergessen ist normal. Es hilft dem Gehirn, Wichtiges von Unwichtigem zu trennen. Jedes Wiederholen aus dem Kopf hebt die Kurve wieder an, und danach fällt sie langsamer.';
+}
+drawCurve();
+
+/* ---------- Werkstatt: Rundenuhr ---------- */
+let rdTimer=null,rdGong1=false;
+document.querySelectorAll('[data-round]').forEach(b=>b.onclick=()=>{
+  rdTimer&&rdTimer.stop();rdGong1=false;$('#rd-label').textContent='Runde '+b.dataset.round+' läuft';
+  rdTimer=Timer(14*60,r=>{const c=$('#rd-clock');c.textContent=fmt(r);
+    if(r<=120&&!rdGong1){rdGong1=true;gong(1);$('#rd-hint').innerHTML='<b>Gong!</b> Methodenkoffer S. 16: Kreuzt an, wofür die Methode aus eurer Sicht taugt. Dann aufräumen.'}
+    c.classList.toggle('warn',r<=120);
+    if(r>120)$('#rd-hint').textContent='Arbeitszeit · noch '+fmt(r-120)+' bis zum Gong';
+  },()=>{gong(2);$('#rd-label').textContent='Runde '+b.dataset.round+' beendet';$('#rd-hint').innerHTML=b.dataset.round==='3'?'<b>Geschafft.</b> Jetzt Museumsgang: Ergebnisse auslegen.':'<b>Wechsel!</b> Geht mit eurem Tandem zur nächsten Station.'});
+  rdTimer.start();
+});
+$('#rd-stop').onclick=()=>{rdTimer&&rdTimer.stop();$('#rd-clock').textContent='14:00';$('#rd-clock').classList.remove('warn');$('#rd-label').textContent='Runde wählen und starten';$('#rd-hint').textContent='12 Minuten arbeiten · Gong · 2 Minuten Matrix und Wechsel'};
+
+/* ---------- Stationen ---------- */
+const COL=['var(--sky)','var(--peach)','var(--sage)','var(--lav)','var(--rose)','var(--gold)'];
+const ST=[
+ {name:"Die Lese-Detektive",meth:"Fünf-Schritt-Lesemethode & Markieren",goal:"Verstehen langer Fachtexte",need:"ein Fachtext aus euren Unterlagen (oder der Ersatztext an der Station) · 2 Textmarker · Klebezettel",
+  steps:[["Überblick","Überfliegt Überschriften, Bilder und fett Gedrucktes. Worum geht es ungefähr?",1],
+   ["Fragen stellen","Jede Person schreibt zwei Fragen an den Text auf je einen Klebezettel. Was will ich nach dem Lesen wissen?",2],
+   ["Lesen im Wechsel","Erst einen Absatz ganz lesen, dann höchstens einen Satz markieren. Die andere Person dreht den Text um und fasst den Absatz in einem Satz zusammen. Dann wechselt ihr.",5],
+   ["Wiedergeben","Text zu. Beantwortet euch die Klebezettel-Fragen gegenseitig aus dem Kopf.",3],
+   ["Rückblick","Text auf: Was fehlte? Was war falsch?",1]],
+  why:"Markieren allein bringt wenig. Wer erst liest und dann sparsam markiert, lernt mehr (Miyatsu et al., 2018). Die eigentliche Kraft steckt im Wiedergeben aus dem Kopf.",
+  more:"Klebt eure Fragen in die Unterlagen. Beim nächsten Lernen beantwortet ihr sie zuerst, bevor ihr den Text lest."},
+ {name:"Der Mini-Spickzettel",meth:"Zusammenfassen",goal:"Behalten und Lücken finden",need:"eure Unterlagen · Karteikarten als Spickzettel · Buntstift",
+  steps:[["Lesen","Jede Person liest einen anderen Abschnitt.",3],
+   ["Spickzettel aus dem Kopf","Unterlagen umdrehen. Höchstens 7 Stichworte oder eine Skizze auf eine Karteikarte.",3],
+   ["Spickzettel-Tausch","Die andere Person erklärt euren Abschnitt nur mit eurem Spickzettel. Wo hakt es?",4],
+   ["Prüfen","Unterlagen auf: Lücken in einer anderen Farbe ergänzen.",2]],
+  why:"Abschreibendes Zusammenfassen bringt kaum etwas. In eigenen Worten und aus dem Kopf wird es zur Abrufübung (Dunlosky et al., 2013).",
+  more:"Macht einen zweiten Spickzettel mit nur 3 Stichworten. Reicht das noch zum Erklären?"},
+ {name:"Die Mind-Map-Staffel",meth:"Mind-Map",goal:"Überblick und Zusammenhänge",need:"A3-Papier · zwei Stiftfarben · eure Unterlagen",
+  steps:[["Thema in die Mitte","Schreibt euer Klausurthema groß in die Mitte.",1],
+   ["Staffel aus dem Kopf","Unterlagen zu. Abwechselnd ergänzt jede Person einen Ast, höchstens 30 Sekunden pro Zug. Wer nicht weiterweiß, setzt einen Joker: eine Frage an den Rand.",5,"relay"],
+   ["Faktencheck","Unterlagen auf: Was fehlt oder stimmt nicht? Ergänzt in Farbe 2.",3],
+   ["Verbindungsjagd","Zeichnet zwei Pfeile zwischen verschiedenen Ästen und beschriftet sie: Wie hängt das zusammen?",3]],
+  why:"Selbst erstellte Concept-Maps zeigen in Studien einen mittleren bis guten Lerneffekt, stärker als fertige Maps (g = 0,72; Schroeder et al., 2018). Mind-Maps sind ihnen ähnlich, aber weniger erforscht.",
+  more:"Erklärt die Mind-Map einem anderen Tandem in 60 Sekunden, nur entlang der Äste."},
+ {name:"Das Karteikarten-Duell",meth:"Karteikarten & Leitner-Box",goal:"Behalten und Wiederholen",need:"Karteikarten · M6 Leitner-Box · eure Unterlagen · optional Anki oder Quizlet",
+  steps:[["Karten schreiben","Jede Person schreibt 5 Karten: vorne eine Frage (kein bloßer Begriff), hinten die Antwort in eigenen Worten und eine Mini-Skizze.",5],
+   ["Duell","Stapel tauschen und abfragen. Nicht gewusst? Karte nach hinten und gleich noch einmal.",5],
+   ["Leitner-Plan","Schaut auf M6: Welche Karte kommt in welches Fach? Tragt euren nächsten Wiederholtermin ein.",2]],
+  why:"Selbsttest und verteiltes Wiederholen haben den höchsten Nutzen (Dunlosky et al., 2013). Eine Karte erst weglegen, wenn ihr sie dreimal gewusst habt (Miyatsu et al., 2018). Ein großer Stapel wirkt besser als viele kleine (Kornell, 2009).",
+  more:"Mischt die Karten von euch beiden und spielt noch eine Runde."},
+ {name:"Die Sketch-Rate-Runde",meth:"Sketchnotes",goal:"Überblick, Wort und Bild verbinden",need:"Begriffskarten (M14) · Fineliner · Papier · Symbolvorlage",
+  steps:[["Grundformen","Kasten, Pfeil, Sprechblase, Strichmännchen. Jede Person hat zwei Versuche.",2],
+   ["Pflege-Pictionary","Eine Person zieht einen Begriff und zeichnet ihn in 20 Sekunden, ohne Buchstaben. Die andere rät. Dann wechselt ihr.",4,"pict"],
+   ["Sketchnote aus dem Kopf","Wählt ein Thema aus euren Unterlagen. Ohne Unterlagen: Titel, drei bis fünf Kernpunkte mit Symbol, Pfeile. In der letzten Minute nachschauen und ergänzen.",6]],
+  why:"Zeichnen hilft beim Behalten (Wammes et al., 2016) und beim Verstehen von Texten, besonders im Vergleich zum bloßen Lesen (Fiorella & Zhang, 2018). Schön muss es nicht sein.",
+  more:"Erklärt euch die Sketchnote gegenseitig, nur anhand der Bilder."},
+ {name:"Die Abruf-Arena",meth:"Aktives Abrufen",goal:"alles, vor allem Behalten",need:"Papier · zwei Stiftfarben · eure Unterlagen · Methodenkoffer S. 4–5 (Abrufblatt)",
+  steps:[["Gehirn-Entleerung","Unterlagen zu. Jede Person schreibt alles auf, was sie zum Thema weiß: Stichworte, Skizzen, Pfeile.",3],
+   ["Vergleich","Unterlagen auf: Fehlendes in der zweiten Farbe ergänzen.",2],
+   ["Frage-Tausch","Jede Person schreibt drei Fragen, eine pro Stufe: nennen · erklären · anwenden. Tauscht und beantwortet sie ohne Unterlagen.",4,"ops"],
+   ["Erklär’s der Patientin","Eine Person erklärt einen Fachbegriff so, wie sie ihn einer Patientin erklären würde. Die andere fragt zweimal „Warum?“. Dann wechselt ihr.",3]],
+  why:"Abrufen gehört zu den wirksamsten Lernmethoden überhaupt (Roediger & Karpicke, 2006; Adesope et al., 2017). Erklären und Warum-Fragen vertiefen das Verstehen (Dunlosky et al., 2013).",
+  more:"Übertragt eure Fragen ins Abrufblatt und plant die Wiederholung nach 1, 3 und 7 Tagen."}
+];
+const esc=s=>s.replace(/&/g,'&amp;');
+$('#stgrid').innerHTML=ST.map((s,i)=>`<button class="stcard" data-go="station${i+1}"><span class="no" style="color:${COL[i]}">${i+1}</span><b>${s.name}</b><span>${esc(s.meth)}</span><span class="note">Taugt für: ${s.goal}</span></button>`).join('');
+
+const PICT=["Blutdruck","Lagerung","Händedesinfektion","Puls","Infusion","Sturzprophylaxe","Mobilisation","Thermometer","Übergabe","Schmerzskala","Atmung","Waschschüssel","Dokumentation","Rollstuhl","Klingel","Schlaf","Pause","Gedächtnis"];
+let stTimers=[];function stopStationTimers(){stTimers.forEach(t=>t.stop());stTimers=[]}
+let autoNext=true;
+function renderStation(n){
+  stopStationTimers();const s=ST[n-1],box=$('#v-station');const total=s.steps.reduce((a,x)=>a+x[2],0);
+  box.innerHTML=`<div class="sthead"><span class="no" style="background:${COL[n-1]}">${n}</span><div style="min-width:0;display:flex;flex-direction:column;gap:4px"><span class="note">Station ${n} · ${esc(s.meth)}</span><h2>${s.name}</h2><div class="meta"><span class="chip">im Tandem · ${total} Minuten</span><span class="chip" style="background:var(--lav-l);color:var(--lav)">Taugt für: ${s.goal}</span></div></div></div>
+  <div class="need"><b>Ihr braucht:</b> ${esc(s.need)}</div>
+  <div class="row"><button class="btn" id="st-run">Station starten</button><label class="note" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="st-auto" ${autoNext?'checked':''}> automatisch zum nächsten Schritt</label></div>
+  <ol class="steps">${s.steps.map((x,i)=>`<li class="step" data-i="${i}"><span class="sn">${i+1}</span><div style="min-width:0"><h3>${x[0]}<span class="min">${x[2]} Min.</span></h3><p>${x[1]}</p>
+    <div class="ctl"><span class="t" id="st-t${i}">${fmt(x[2]*60)}</span><button class="btn small" data-step="${i}">Schritt starten</button></div>${helper(x[3],i)}</div></li>`).join('')}</ol>
+  <div class="gong" id="st-gong" hidden><b>Gong!</b> Methodenkoffer S. 16: Kreuzt an, wofür diese Methode aus eurer Sicht taugt.</div>
+  <div class="why"><b>Warum das wirkt:</b> ${esc(s.why)}</div>
+  <div class="more"><b>Schon fertig?</b> ${esc(s.more)}</div>
+  <div class="row"><button class="btn ghost" data-go="werkstatt">Zur Stationsübersicht</button>${n<6?`<button class="btn ghost" data-go="station${n+1}">Station ${n+1}</button>`:''}</div>`;
+  $('#st-auto').onchange=e=>{autoNext=e.target.checked};
+  const runStep=i=>{stopStationTimers();const li=box.querySelectorAll('.step');li.forEach((el,k)=>{el.classList.toggle('active',k===i);el.classList.toggle('done',k<i)});
+    const sec=s.steps[i][2]*60;const t=Timer(sec,r=>{const el=$('#st-t'+i);if(el)el.textContent=fmt(r)},()=>{li[i].classList.remove('active');li[i].classList.add('done');
+      if(i<s.steps.length-1){gong(1);if(autoNext)runStep(i+1);else li[i+1].classList.add('active')}else{gong(2);$('#st-gong').hidden=false;$('#st-gong').scrollIntoView({behavior:'smooth',block:'center'})}});
+    stTimers.push(t);t.start();li[i].scrollIntoView({behavior:'smooth',block:'nearest'})};
+  box.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{unlock();runStep(+b.dataset.step)});
+  $('#st-run').onclick=()=>{unlock();$('#st-gong').hidden=true;runStep(0)};
+  const relay=box.querySelector('[data-relay]');
+  if(relay){let rt=null,who=0;relay.onclick=()=>{rt&&rt.stop();who=1-who;$('#relay-who').textContent=who?'Person A ist dran':'Person B ist dran';rt=Timer(30,r=>{$('#relay-t').textContent=Math.ceil(Math.max(0,r))+' s'},()=>{gong(1);$('#relay-who').textContent='Zeit! Stift weitergeben.'});rt.start()}}
+  const pb=box.querySelector('[data-pict]');
+  if(pb){let pool=[],pt=null;pb.onclick=()=>{if(!pool.length)pool=PICT.slice().sort(()=>Math.random()-.5);const w=pool.pop();$('#pict-w').textContent=w;$('#pict-w').hidden=false;$('#pict-cover').hidden=true;pt&&pt.stop();
+    setTimeout(()=>{$('#pict-w').hidden=true;$('#pict-cover').hidden=false;$('#pict-cover').textContent='Begriff verdeckt – jetzt zeichnen!';pt=Timer(20,r=>{$('#pict-t').textContent=Math.ceil(Math.max(0,r))+' s'},()=>{gong(1);$('#pict-cover').textContent='Zeit! Was war es? Auflösung: '+w});pt.start()},3000)}}
+}
+function helper(kind,i){
+  if(kind==='relay')return`<div class="helper"><span>Zug-Uhr für die Staffel</span><div class="row"><button class="btn small" data-relay>Nächster Zug (30 s)</button><span class="t" id="relay-t" style="font-size:1.2rem">30 s</span><span id="relay-who" class="note">Noch niemand dran</span></div></div>`;
+  if(kind==='pict')return`<div class="helper"><span>Nur die zeichnende Person schaut: Der Begriff ist 3 Sekunden sichtbar, dann laufen 20 Sekunden.</span><div class="term" id="pict-w" hidden></div><div id="pict-cover" class="note">Noch kein Begriff gezogen</div><div class="row"><button class="btn small" data-pict>Begriff ziehen</button><span class="t" id="pict-t" style="font-size:1.2rem">20 s</span></div><span class="note">Ergänzung zu euren Begriffskarten M14.</span></div>`;
+  if(kind==='ops')return`<div class="helper"><b>Fragen-Starter</b><span><b>Nennen:</b> Nenne drei … · Was ist …?<br><b>Erklären:</b> Erkläre, warum … · Wie hängt … mit … zusammen?<br><b>Anwenden:</b> Was tust du, wenn eine Patientin … ? · Übertrage … auf …</span></div>`;
+  return'';
+}
+
+/* ---------- Matrix ---------- */
+const MX=[["1 · Lese-Detektive","Markieren & Lesen","","✓","","","n","m"],
+["2 · Mini-Spickzettel","Zusammenfassen","","✓","✓","","n","m"],
+["3 · Mind-Map-Staffel","Mind-Map","✓","✓","","","m","m"],
+["4 · Karteikarten-Duell","Karteikarten & Leitner","","","✓","✓","h","h"],
+["5 · Sketch-Rate-Runde","Sketchnotes","✓","","✓","","m","m"],
+["6 · Abruf-Arena","Aktives Abrufen","","✓","✓","✓","h","h"]];
+const LV={h:'hoch',m:'mittel',n:'niedrig'};
+$('#mx-body').innerHTML=MX.map(r=>`<tr><td><b>${r[0]}</b><br><span class="note">${esc(r[1])}</span></td>${r.slice(2,6).map(c=>`<td class="c">${c||'·'}</td>`).join('')}<td><span class="lvl ${r[6]}">${LV[r[6]]}</span></td><td><span class="lvl ${r[7]}">${LV[r[7]]}</span></td></tr>`).join('');
+$('#mx-reveal').onclick=function(){$('#mx-box').hidden=false;this.hidden=true};
+
+go(location.hash.slice(1)||'merktest');
+
+/* ---------- Installieren & offline ---------- */
+const standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+if(standalone)$('#install').hidden=true;
+let deferred=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#inst-btn').hidden=false;$('#inst-text').textContent='Tippe auf den Knopf, dann erscheint die App auf deinem Startbildschirm.'});
+$('#inst-btn').onclick=async()=>{if(!deferred)return;deferred.prompt();try{await deferred.userChoice}catch(e){}deferred=null;$('#inst-btn').hidden=true};
+window.addEventListener('appinstalled',()=>{$('#install').hidden=true});
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+})();
+</script>
+
+</body>
+</html>

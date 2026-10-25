@@ -1,0 +1,26 @@
+Lernen lernen – App für Block 5 & 6
+====================================
+
+Inhalt dieses Ordners
+- index.html ............ die App
+- manifest.webmanifest .. Name, Farben und Symbol für den Startbildschirm
+- sw.js ................. sorgt dafür, dass die App offline funktioniert
+- fonts/ ................ Schriften Lora und Poppins (lokal, kein Google-Abruf)
+- icons/ ................ App-Symbole
+
+Veröffentlichen (einmalig)
+Den GANZEN Ordner hochladen, nicht nur index.html – z. B. per Netlify Drop
+(app.netlify.com/drop) oder GitHub Pages. Die Adresse muss mit https:// beginnen,
+sonst lässt sich die App nicht installieren.
+
+Wenn du später etwas änderst
+In sw.js die Zeile  const VERSION = 'll-v1';  hochzählen ('ll-v2', 'll-v3' …),
+dann den ganzen Ordner erneut hochladen. So bekommen alle Handys die neue Version.
+
+Direkt zu einer Station springen (für QR-Codes)
+<deine Adresse>/#station1 … #station6, #werkstatt, #matrix, #merktest
+
+Datenschutz
+Die App speichert keine Daten der Lernenden und braucht keine Anmeldung.
+
+Jasmin Klug · Praxisanleiterin · Modul „Lernen lernen“ (LS 1.1.2)
