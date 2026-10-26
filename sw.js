@@ -1,5 +1,5 @@
 // Offline-Speicher für die App. Bei jeder Änderung der App VERSION erhöhen.
-const VERSION = 'll-v1';
+const VERSION = 'll-v2';
 const FILES = [
   './', './index.html', './manifest.webmanifest',
   './fonts/lora.woff', './fonts/lora-italic.woff',

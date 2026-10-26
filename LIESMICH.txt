@@ -19,8 +19,16 @@ dann den ganzen Ordner erneut hochladen. So bekommen alle Handys die neue Versio
 
 Direkt zu einer Station springen (für QR-Codes)
 <deine Adresse>/#station1 … #station6, #werkstatt, #matrix, #merktest
+<deine Adresse>/#check (Lernvorlieben-Check), #befunde (Befundkarten), #karte (Antwortkarte Rallye)
 
 Datenschutz
-Die App speichert keine Daten der Lernenden und braucht keine Anmeldung.
+Die App braucht keine Anmeldung und schickt nichts weg. Einzige Ausnahme vom
+„nichts speichern“: Die Antworten im Lernvorlieben-Check bleiben auf dem eigenen
+Gerät (Browser-Speicher), damit das Ergebnis in Block 6 noch da ist. Mit
+„Alles löschen“ sind sie weg. Niemand außer der Person am Gerät sieht sie.
+
+Version 2 (25.10.2026): Lernvorlieben-Check, Befundkarten, Antwortkarte,
+Symbol-Spickzettel und Leitner-Plan ergänzt – damit muss für Block 5+6 kaum
+noch etwas gedruckt werden.
 
 Jasmin Klug · Praxisanleiterin · Modul „Lernen lernen“ (LS 1.1.2)

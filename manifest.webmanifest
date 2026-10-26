@@ -1,7 +1,7 @@
 {
   "name": "Lernen lernen · Gedächtnis & Methodenwerkstatt",
   "short_name": "Lernen lernen",
-  "description": "Unterrichts-App zum Modul „Lernen lernen“: Merktest, Gedächtnis-Rallye, Vergessenskurve und die Lernmethoden-Werkstatt mit sechs Stationen.",
+  "description": "Unterrichts-App zum Modul „Lernen lernen“: Merktest, Gedächtnis-Rallye, Vergessenskurve, Lernvorlieben-Check, Befundkarten und die Lernmethoden-Werkstatt mit sechs Stationen.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",
@@ -10,13 +10,61 @@
   "background_color": "#fbf8f6",
   "theme_color": "#fbf8f6",
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Methodenwerkstatt", "url": "./#werkstatt", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Merktest", "url": "./#merktest", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+    {
+      "name": "Methodenwerkstatt",
+      "url": "./#werkstatt",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Lernvorlieben-Check",
+      "url": "./#check",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Merktest",
+      "url": "./#merktest",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }

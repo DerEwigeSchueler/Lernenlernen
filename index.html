@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lernen lernen · Block 5 &amp; 6</title>
-<meta name="description" content="Gedächtnis und Lernmethoden-Werkstatt – Unterrichts-App zum Modul „Lernen lernen“.">
+<meta name="description" content="Gedächtnis, Lernvorlieben-Check und Lernmethoden-Werkstatt – Unterrichts-App zum Modul „Lernen lernen“.">
 <meta name="theme-color" content="#fbf8f6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1e1b22" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
@@ -167,6 +167,61 @@ th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu
 td.c{text-align:center;font-size:1.05rem}
 .lvl{display:inline-block;font-size:.72rem;font-weight:600;border-radius:99px;padding:2px 9px;white-space:nowrap}
 .lvl.h{background:var(--ok-l);color:var(--ok)} .lvl.m{background:var(--gold-l);color:var(--gold)} .lvl.n{background:var(--no-l);color:var(--no)}
+
+/* ---- Ergänzung Oktober 2026: Check, Befunde, Antwortkarte, Symbole ---- */
+.private{display:flex;gap:10px;align-items:flex-start;background:var(--sage-l);border-radius:14px;padding:10px 14px;font-size:.88rem;color:var(--ink)}
+.private svg{flex:0 0 22px;width:22px;height:22px;color:var(--sage);margin-top:1px}
+#ck-box{display:flex;flex-direction:column;gap:14px}
+#ck-box>h3{margin-top:8px}
+.ck-dots{display:flex;flex-wrap:wrap;gap:6px}
+.ck-dots button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--paper);font:inherit;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;padding:0}
+.ck-dots button.on{background:var(--lav-l);border-color:var(--lav);color:var(--ink)}
+.ck-dots button.now{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.ck-q h3{font-size:clamp(1.1rem,3vw,1.35rem);margin-top:4px}
+.ck-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.ck-opts{grid-template-columns:1fr}}
+.ck-opt{font:inherit;text-align:left;display:flex;gap:12px;align-items:center;padding:14px;border-radius:16px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;min-height:66px;line-height:1.35}
+.ck-opt i{font-style:normal;font-size:1.35rem;flex:0 0 auto;line-height:1}
+.ck-opt[aria-pressed="true"]{border-color:var(--lav);background:var(--lav-l);font-weight:500}
+.ck-done{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;padding:18px 8px}
+.ck-done .bigword{font-size:clamp(1.6rem,6vw,2.6rem)}
+.ck-res{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:680px){.ck-res{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ck-res>div{border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:3px;background:var(--bg)}
+.ck-res .sym{font-size:1.6rem;line-height:1}
+.ck-res b{font-family:var(--serif);color:var(--ink);font-size:1.05rem}
+.ck-res .cnt{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--ink);line-height:1.1}
+.ck-bar{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-top:6px}
+.ck-bar i{height:12px;border-radius:3px;background:var(--line)}
+.ck-mean{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.ck-mean{grid-template-columns:1fr}}
+.ck-mean>div{border-radius:16px;padding:12px 14px;font-size:.9rem;color:var(--ink);display:flex;flex-direction:column;gap:4px}
+.ck-mean>div b{font-family:var(--serif);font-size:1.05rem}
+.ck-refl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ck-refl li{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 14px;color:var(--ink);font-size:.92rem}
+.bf-card{border-radius:20px;border:1px solid var(--line);background:var(--bg);padding:18px clamp(14px,3vw,24px);display:flex;flex-direction:column;gap:12px}
+.bf-card .lab{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);background:var(--rose-l);padding:4px 12px;border-radius:99px;width:fit-content}
+.bf-card h3{font-size:clamp(1.25rem,3.4vw,1.6rem)}
+.bf-card p{font-size:clamp(1rem,2.4vw,1.12rem);color:var(--ink);line-height:1.65;max-width:60ch}
+.bf-card .lq{background:var(--gold-l);border-radius:14px;padding:12px 14px;color:var(--ink);font-size:1rem}
+.ak-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ak-pick button{font:inherit;cursor:pointer;border-radius:18px;border:2px solid var(--line);padding:16px 8px;background:var(--paper);display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink);text-align:center}
+.ak-pick button .ini{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.7rem;color:#fff}
+.ak-pick button b{font-family:var(--serif);font-size:1.25rem}
+.ak-pick button span{font-size:.76rem;color:var(--muted);line-height:1.3}
+.ak-pick button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.ak-big{border-radius:26px;min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;color:#2f2a33}
+.ak-big .nm{font-family:var(--serif);font-weight:700;font-size:clamp(3.2rem,17vw,8rem);line-height:1}
+.ak-big .rl{font-size:clamp(1rem,3vw,1.4rem);max-width:28ch}
+.symforms{background:var(--paper);border-radius:12px;padding:8px;color:var(--ink)}
+.symforms svg{display:block;width:100%;height:auto}
+.sym-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.sym-grid div{background:var(--paper);border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:.72rem;color:var(--body);line-height:1.25}
+.sym-grid svg{width:40px!important;height:40px!important;color:var(--ink)}
+.leit{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+@media (max-width:480px){.leit{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.leit div{background:var(--paper);border-radius:10px;padding:8px 4px;text-align:center;font-size:.76rem;line-height:1.3}
+.leit div b{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--ink)}
 footer{font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
 @media (prefers-reduced-motion:no-preference){.step,.corner,.stcard{transition:background .2s,border-color .2s,opacity .2s}}
 </style>
@@ -236,6 +291,35 @@ footer{font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;ga
     <p class="src">Modellhafte Darstellung, keine Messdaten. Wie schnell wir vergessen, hängt stark vom Stoff ab. Ebbinghaus (1885); Nachbildung der Kurve: Murre &amp; Dros (2015).</p>
   </section>
 
+
+  <!-- ===== Block 5: Antwortkarte (ersetzt M12-Antwortkarten) ===== -->
+  <section class="panel view" id="v-karte" hidden>
+    <div><span class="chip">Gedächtnis-Rallye · Runde 2 · Tablet statt Karten</span></div>
+    <h2>Eure Antwortkarte</h2>
+    <p>Einigt euch in der Gruppe, wer gerade am Werk ist. Auf „drei, zwei, eins“ tippt ihr den Namen an und haltet das Tablet hoch.</p>
+    <div class="ak-pick" id="ak-pick"></div>
+    <div id="ak-show"></div>
+  </section>
+
+  <!-- ===== Block 5: Lernvorlieben-Check (ersetzt M11) ===== -->
+  <section class="panel view" id="v-check" hidden>
+    <div><span class="chip">Lerntypen-Mythos-Check · 5 Min.</span></div>
+    <h2>Mein Lernvorlieben-Check</h2>
+    <p>Hier geht es darum, was du beim Lernen <b>gern magst</b>, nicht darum, in welche Schublade du gehörst. Tippe pro Situation an, was am ehesten zu dir passt. Passen zwei gleich gut, darfst du zwei antippen. Es gibt kein Richtig oder Falsch.</p>
+    <div class="private"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span><b>Dein Ergebnis gehört dir.</b> Es bleibt nur auf diesem Gerät, wird nirgendwohin geschickt und von niemandem eingesammelt. Du entscheidest, ob du etwas davon erzählst – und kannst es jederzeit löschen.</span></div>
+    <div id="ck-box"></div>
+  </section>
+
+  <!-- ===== Block 5: Befundkarten (ersetzt M5) ===== -->
+  <section class="panel view" id="v-befunde" hidden>
+    <div><span class="chip">Gruppenarbeit · 6 Min.</span></div>
+    <h2>Befundkarten: Was sagt die Forschung?</h2>
+    <div class="task"><b>Eure Leitfrage:</b> Stimmt die Aussage „Ich lerne nur visuell gut“? Begründet eure Antwort mit eurer Befundkarte. Danach stellt jede Gruppe ihr Ergebnis in einem Satz vor.</div>
+    <div class="row"><span class="note">Eure Gruppe:</span><div class="seg" role="group" aria-label="Befundkarte" id="bf-seg"></div></div>
+    <div id="bf-card"></div>
+    <p class="src">Pashler et al. (2008) · Newton &amp; Salvi (2020) · Coffield et al. (2004) · Rogowsky et al. (2015)</p>
+  </section>
+
   <!-- ===== Block 6: Start ===== -->
   <section class="panel view" id="v-werkstatt" hidden>
     <div><span class="chip">Lernmethoden-Werkstatt · 90 Min.</span></div>
@@ -243,7 +327,7 @@ footer{font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;ga
     <p>Sechs Stationen, sechs Lernmethoden. An jeder arbeitet ihr mit euren eigenen Unterlagen. Ihr lernt also nicht nur Methoden kennen, sondern gleich für eure Klausur.</p>
     <div class="rules">
       <div class="rule"><span class="ic" style="background:var(--peach)">3</span><p>Mit eurem Tandem besucht ihr <b>3 von 6 Stationen</b>. Welche, entscheidet ihr.</p></div>
-      <div class="rule"><span class="ic" style="background:var(--lav)">◆</span><p><b>Mindestens eine Station</b> passt nicht zu euren Vorlieben. Schaut auf die Rückseite eures Lernvorlieben-Checks.</p></div>
+      <div class="rule"><span class="ic" style="background:var(--lav)">◆</span><p><b>Mindestens eine Station</b> passt nicht zu euren Vorlieben. Schaut in eure Auswertung vom <a href="#check" data-go="check" style="color:inherit">Lernvorlieben-Check</a> (Block 5).</p></div>
       <div class="rule"><span class="ic" style="background:var(--sky)">≤3</span><p>Höchstens <b>3 Tandems pro Station</b> und Runde. Tragt euch im Belegungsplan ein.</p></div>
       <div class="rule"><span class="ic" style="background:var(--sage)">?</span><p>Leitfrage an jeder Station: <b>Wofür taugt diese Methode?</b> Beim Gong kreuzt ihr im Methodenkoffer S. 16 an.</p></div>
     </div>
@@ -315,12 +399,12 @@ function Timer(sec,onTick,onEnd){let end=0,id=null;return{start(){end=Date.now()
 let active=[];function stopAll(){active.forEach(t=>t.stop());active=[]}
 
 /* ---------- Navigation ---------- */
-const SUB={b5:[['merktest','Merktest'],['rallye','Gedächtnis-Rallye'],['kurve','Vergessenskurve']],b6:[['werkstatt','Start & Rundenuhr'],['station1','1'],['station2','2'],['station3','3'],['station4','4'],['station5','5'],['station6','6'],['matrix','Matrix & Abschluss']]};
-const VALID=/^(merktest|rallye|kurve|werkstatt|matrix|station[1-6])$/;let cur='';
+const SUB={b5:[['merktest','Merktest'],['rallye','Gedächtnis-Rallye'],['karte','Antwortkarte'],['kurve','Vergessenskurve'],['check','Lernvorlieben-Check'],['befunde','Befundkarten']],b6:[['werkstatt','Start & Rundenuhr'],['station1','1'],['station2','2'],['station3','3'],['station4','4'],['station5','5'],['station6','6'],['matrix','Matrix & Abschluss']]};
+const VALID=/^(merktest|rallye|karte|kurve|check|befunde|werkstatt|matrix|station[1-6])$/;let cur='';
 function go(v){
   if(!VALID.test(v))v='merktest';
   cur=v;
-  document.body.classList.toggle('b6',v!=='merktest'&&v!=='rallye'&&v!=='kurve');
+  document.body.classList.toggle('b6',!SUB.b5.some(x=>x[0]===v));
   $('#hd-title').textContent=document.body.classList.contains('b6')?'Methodenwerkstatt':'Gedächtnis';
   $('#hd-badge').textContent=document.body.classList.contains('b6')?'Lernen lernen · Block 6':'Lernen lernen · Block 5';
   const blk=SUB.b5.some(x=>x[0]===v)?'b5':'b6';
@@ -328,6 +412,7 @@ function go(v){
   $('#subnav').innerHTML=SUB[blk].map(([k,l])=>`<button data-go="${k}" aria-current="${k===v}" ${/^\d$/.test(l)?`aria-label="Station ${l}"`:''}>${/^\d$/.test(l)?'Station '+l:l}</button>`).join('');
   document.querySelectorAll('.view').forEach(s=>s.hidden=true);
   if(v.startsWith('station')){renderStation(+v.slice(7));$('#v-station').hidden=false}else $('#v-'+v).hidden=false;
+  if(v==='check')drawCheck();
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){e.preventDefault();if(!b.closest('#v-werkstatt')&&!b.closest('#v-station'))stopStationTimers();go(b.dataset.go);if(b.closest('.stations')||b.closest('#v-station'))window.scrollTo({top:0})}});
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(VALID.test(h)&&h!==cur)go(h)});
@@ -376,7 +461,7 @@ const R2=[["Du planst, in welcher Reihenfolge du deine drei Patientinnen und Pat
 const TRIO=[["Kurt","Kortex, der Chef: planen, denken, Arbeitsgedächtnis"],["Hippi","Hippocampus: legt Neues ab"],["Amy","Amygdala: bewertet Gefühle, schlägt Alarm"]];
 let raRound=0,raIdx=0;
 const raTasks=["<b>Ansage:</b> Steht auf, gern mit eurem Tandem. Geht in die Ecke, in der die Information gerade steckt. Ihr habt 10 Sekunden. Wer nicht laufen mag, zeigt die Ecke mit 1–4 Fingern.",
-"<b>Ansage:</b> An euren Gruppentischen liegen drei Karten: Kurt, Hippi und Amy. 20 Sekunden zum Einigen, auf „drei, zwei, eins“ hält jede Gruppe ihre Karte hoch. Einen Punkt gibt es für die beste Begründung.",
+"<b>Ansage:</b> An euren Gruppentischen liegen drei Karten: Kurt, Hippi und Amy. 20 Sekunden zum Einigen, auf „drei, zwei, eins“ hält jede Gruppe ihre Karte hoch. Einen Punkt gibt es für die beste Begründung.<br><span class=\"note\">Ohne Papierkarten: Jede Gruppe öffnet in der App „Antwortkarte“ und hält das Tablet hoch.</span>",
 "<b>Ansage:</b> Ihr habt heute die Normwerte für den Puls gelernt. Ohne etwas zu tun, ist in einer Woche das meiste davon weg. 60 Sekunden: Was tut ihr, damit sie im Langzeitgedächtnis ankommen?"];
 const raTitles=["Runde 1 · Wo steckt die Information?","Runde 2 · Wer ist am Werk?","Runde 3 · Rette die Information!"];
 document.querySelectorAll('#v-rallye .seg button').forEach(b=>b.onclick=()=>{raRound=+b.dataset.r;raIdx=0;document.querySelectorAll('#v-rallye .seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawRa()});
@@ -464,14 +549,14 @@ const ST=[
    ["Verbindungsjagd","Zeichnet zwei Pfeile zwischen verschiedenen Ästen und beschriftet sie: Wie hängt das zusammen?",3]],
   why:"Selbst erstellte Concept-Maps zeigen in Studien einen mittleren bis guten Lerneffekt, stärker als fertige Maps (g = 0,72; Schroeder et al., 2018). Mind-Maps sind ihnen ähnlich, aber weniger erforscht.",
   more:"Erklärt die Mind-Map einem anderen Tandem in 60 Sekunden, nur entlang der Äste."},
- {name:"Das Karteikarten-Duell",meth:"Karteikarten & Leitner-Box",goal:"Behalten und Wiederholen",need:"Karteikarten · M6 Leitner-Box · eure Unterlagen · optional Anki oder Quizlet",
+ {name:"Das Karteikarten-Duell",meth:"Karteikarten & Leitner-Box",goal:"Behalten und Wiederholen",need:"Karteikarten · eure Unterlagen · Leitner-Plan in der App · optional Anki oder Quizlet",
   steps:[["Karten schreiben","Jede Person schreibt 5 Karten: vorne eine Frage (kein bloßer Begriff), hinten die Antwort in eigenen Worten und eine Mini-Skizze.",5],
    ["Duell","Stapel tauschen und abfragen. Nicht gewusst? Karte nach hinten und gleich noch einmal.",5],
-   ["Leitner-Plan","Schaut auf M6: Welche Karte kommt in welches Fach? Tragt euren nächsten Wiederholtermin ein.",2]],
+   ["Leitner-Plan","Schaut auf den Leitner-Plan unten: Welche Karte kommt in welches Fach? Tragt euren nächsten Wiederholtermin in euren Kalender ein.",2,"leit"]],
   why:"Selbsttest und verteiltes Wiederholen haben den höchsten Nutzen (Dunlosky et al., 2013). Eine Karte erst weglegen, wenn ihr sie dreimal gewusst habt (Miyatsu et al., 2018). Ein großer Stapel wirkt besser als viele kleine (Kornell, 2009).",
   more:"Mischt die Karten von euch beiden und spielt noch eine Runde."},
- {name:"Die Sketch-Rate-Runde",meth:"Sketchnotes",goal:"Überblick, Wort und Bild verbinden",need:"Begriffskarten (M14) · Fineliner · Papier · Symbolvorlage",
-  steps:[["Grundformen","Kasten, Pfeil, Sprechblase, Strichmännchen. Jede Person hat zwei Versuche.",2],
+ {name:"Die Sketch-Rate-Runde",meth:"Sketchnotes",goal:"Überblick, Wort und Bild verbinden",need:"Fineliner · Papier · ein Tablet (Begriffe und Symbol-Spickzettel stehen hier in der App)",
+  steps:[["Grundformen","Kasten, Pfeil, Sprechblase, Strichmännchen. Jede Person hat zwei Versuche. Der Symbol-Spickzettel unten hilft.",2,"sym"],
    ["Pflege-Pictionary","Eine Person zieht einen Begriff und zeichnet ihn in 20 Sekunden, ohne Buchstaben. Die andere rät. Dann wechselt ihr.",4,"pict"],
    ["Sketchnote aus dem Kopf","Wählt ein Thema aus euren Unterlagen. Ohne Unterlagen: Titel, drei bis fünf Kernpunkte mit Symbol, Pfeile. In der letzten Minute nachschauen und ergänzen.",6]],
   why:"Zeichnen hilft beim Behalten (Wammes et al., 2016) und beim Verstehen von Texten, besonders im Vergleich zum bloßen Lesen (Fiorella & Zhang, 2018). Schön muss es nicht sein.",
@@ -516,7 +601,9 @@ function renderStation(n){
 }
 function helper(kind,i){
   if(kind==='relay')return`<div class="helper"><span>Zug-Uhr für die Staffel</span><div class="row"><button class="btn small" data-relay>Nächster Zug (30 s)</button><span class="t" id="relay-t" style="font-size:1.2rem">30 s</span><span id="relay-who" class="note">Noch niemand dran</span></div></div>`;
-  if(kind==='pict')return`<div class="helper"><span>Nur die zeichnende Person schaut: Der Begriff ist 3 Sekunden sichtbar, dann laufen 20 Sekunden.</span><div class="term" id="pict-w" hidden></div><div id="pict-cover" class="note">Noch kein Begriff gezogen</div><div class="row"><button class="btn small" data-pict>Begriff ziehen</button><span class="t" id="pict-t" style="font-size:1.2rem">20 s</span></div><span class="note">Ergänzung zu euren Begriffskarten M14.</span></div>`;
+  if(kind==='pict')return`<div class="helper"><span>Nur die zeichnende Person schaut: Der Begriff ist 3 Sekunden sichtbar, dann laufen 20 Sekunden.</span><div class="term" id="pict-w" hidden></div><div id="pict-cover" class="note">Noch kein Begriff gezogen</div><div class="row"><button class="btn small" data-pict>Begriff ziehen</button><span class="t" id="pict-t" style="font-size:1.2rem">20 s</span></div><span class="note">Ersetzt die Begriffskarten M14 – ihr braucht keine Papierkarten.</span></div>`;
+  if(kind==='sym')return"<div class=\"helper\"><b>Symbol-Spickzettel</b><div class=\"symforms\"><svg viewBox=\"0 0 520 90\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" font-family=\"Poppins,system-ui,sans-serif\" font-size=\"12\">\n<rect x=\"14\" y=\"16\" width=\"70\" height=\"44\" rx=\"6\"/><text x=\"49\" y=\"80\" text-anchor=\"middle\" style=\"fill:var(--muted)\" stroke=\"none\">Kasten</text>\n<path d=\"M118 38 H190 M176 26 L192 38 L176 50\"/><text x=\"155\" y=\"80\" text-anchor=\"middle\" style=\"fill:var(--muted)\" stroke=\"none\">Pfeil</text>\n<path d=\"M226 16 h74 a8 8 0 0 1 8 8 v26 a8 8 0 0 1 -8 8 h-50 l-16 12 v-12 h-8 a8 8 0 0 1 -8 -8 v-26 a8 8 0 0 1 8 -8 z\"/><text x=\"262\" y=\"86\" text-anchor=\"middle\" style=\"fill:var(--muted)\" stroke=\"none\">Sprechblase</text>\n<circle cx=\"372\" cy=\"22\" r=\"9\"/><path d=\"M372 31 V56 M356 40 H388 M372 56 L360 72 M372 56 L384 72\"/><text x=\"372\" y=\"88\" text-anchor=\"middle\" style=\"fill:var(--muted)\" stroke=\"none\">Strichmännchen</text>\n<path d=\"M430 20 h70 M430 38 h70 M430 56 h44\" stroke-dasharray=\"1 7\"/><circle cx=\"430\" cy=\"20\" r=\"3\" fill=\"currentColor\"/><circle cx=\"430\" cy=\"38\" r=\"3\" fill=\"currentColor\"/><circle cx=\"430\" cy=\"56\" r=\"3\" fill=\"currentColor\"/><text x=\"465\" y=\"80\" text-anchor=\"middle\" style=\"fill:var(--muted)\" stroke=\"none\">Aufzählung</text></svg></div><div class=\"sym-grid\"><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z\"/></svg><span>Herz · Kreislauf</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z\"/></svg><span>Flüssigkeit · Infusion</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 4.5a3 3 0 0 0-3 3 3 3 0 0 0-2 5.2A3.2 3.2 0 0 0 7 18a2.8 2.8 0 0 0 5 1.2V5.8A2.8 2.8 0 0 0 9 4.5z\"/><path d=\"M15 4.5a3 3 0 0 1 3 3 3 3 0 0 1 2 5.2A3.2 3.2 0 0 1 17 18a2.8 2.8 0 0 1-5 1.2\"/></svg><span>Gehirn · Denken</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z\"/><circle cx=\"12\" cy=\"12\" r=\"2.8\"/></svg><span>Beobachten</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 10a5 5 0 0 1 10 0c0 3-3 3.5-3 6.5a3 3 0 0 1-5.5 1.6\"/><path d=\"M10 10a2 2 0 0 1 4 0c0 1.5-1.5 2-1.5 3\"/></svg><span>Hören</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M12 7.5V12l3 2\"/></svg><span>Zeit · Pause</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z\"/></svg><span>Schlaf</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-6.5a1.5 1.5 0 0 1 3 0V11m0-5a1.5 1.5 0 0 1 3 0v6m0-3a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-5-2.7L5 15.5a1.5 1.5 0 0 1 2.5-1.7L8 14.5\"/></svg><span>Handeln · Pflegen</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 4l9 16H3L12 4z\"/><path d=\"M12 10v4M12 17v.5\"/></svg><span>Achtung · Risiko</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M8 12.3l2.7 2.7 5.5-5.5\"/></svg><span>erledigt · richtig</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z\"/><path d=\"M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5\"/></svg><span>Wissen · Lernen</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"3.5\"/><path d=\"M2.5 20a6.5 6.5 0 0 1 13 0\"/><circle cx=\"17\" cy=\"9\" r=\"2.8\"/><path d=\"M15.5 14.2A5.5 5.5 0 0 1 22 19.5\"/></svg><span>Team · Gespräch</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h11v6a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8z\"/><path d=\"M16 10h1.5a2.5 2.5 0 0 1 0 5H16\"/><path d=\"M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3\"/></svg><span>Trinken · Essen</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-1.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z\"/></svg><span>Idee · Merke</span></div><div><svg class=\"ico\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4.5\"/><circle cx=\"12\" cy=\"12\" r=\"1\" fill=\"currentColor\"/></svg><span>Ziel</span></div></div><span class=\"note\">Einfach abzeichnen – es muss nicht schön sein, nur wiedererkennbar.</span></div>";
+  if(kind==='leit')return"<div class=\"helper\"><b>Leitner-Plan</b><div class=\"leit\"><div><b>Fach 1</b>täglich</div><div><b>Fach 2</b>alle 2 Tage</div><div><b>Fach 3</b>jede Woche</div><div><b>Fach 4</b>alle 2 Wochen</div><div><b>Fach 5</b>vor der Klausur</div></div><span>Neue Karten kommen in Fach 1. <b>Gewusst:</b> ein Fach weiter. <b>Nicht gewusst:</b> zurück in Fach 1. Statt Box gehen auch fünf Briefumschläge oder Gummibänder.</span><span class=\"note\">Digital machen Anki oder Quizlet das automatisch.</span></div>";
   if(kind==='ops')return`<div class="helper"><b>Fragen-Starter</b><span><b>Nennen:</b> Nenne drei … · Was ist …?<br><b>Erklären:</b> Erkläre, warum … · Wie hängt … mit … zusammen?<br><b>Anwenden:</b> Was tust du, wenn eine Patientin … ? · Übertrage … auf …</span></div>`;
   return'';
 }
@@ -531,6 +618,64 @@ const MX=[["1 · Lese-Detektive","Markieren & Lesen","","✓","","","n","m"],
 const LV={h:'hoch',m:'mittel',n:'niedrig'};
 $('#mx-body').innerHTML=MX.map(r=>`<tr><td><b>${r[0]}</b><br><span class="note">${esc(r[1])}</span></td>${r.slice(2,6).map(c=>`<td class="c">${c||'·'}</td>`).join('')}<td><span class="lvl ${r[6]}">${LV[r[6]]}</span></td><td><span class="lvl ${r[7]}">${LV[r[7]]}</span></td></tr>`).join('');
 $('#mx-reveal').onclick=function(){$('#mx-box').hidden=false;this.hidden=true};
+
+
+/* ---------- Antwortkarte (Rallye Runde 2) ---------- */
+const AKC=['var(--sky)','var(--sage)','var(--rose)'],AKL=['var(--sky-l)','var(--sage-l)','var(--rose-l)'];
+$('#ak-pick').innerHTML=TRIO.map((t,i)=>`<button data-ak="${i}" aria-pressed="false"><span class="ini" style="background:${AKC[i]}">${t[0][0]}</span><b>${t[0]}</b><span>${t[1]}</span></button>`).join('');
+document.querySelectorAll('[data-ak]').forEach(b=>b.onclick=()=>{const i=+b.dataset.ak;document.querySelectorAll('[data-ak]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $('#ak-show').innerHTML=`<div class="ak-big" style="background:${AKL[i]};border:3px solid ${AKC[i]}"><div class="nm" style="color:${AKC[i]}">${TRIO[i][0]}</div><div class="rl">${TRIO[i][1]}</div><button class="btn ghost small" id="ak-clear">Andere Karte wählen</button></div>`;
+  $('#ak-show').scrollIntoView({behavior:'smooth',block:'start'});
+  $('#ak-clear').onclick=()=>{$('#ak-show').innerHTML='';document.querySelectorAll('[data-ak]').forEach(x=>x.setAttribute('aria-pressed',false));window.scrollTo({top:0,behavior:'smooth'})}});
+
+/* ---------- Lernvorlieben-Check (privat, nur auf dem Gerät) ---------- */
+const CK=[["Du sollst einen neuen Ablauf lernen, zum Beispiel das Blutdruckmessen. Am liebsten …", [["S", "schaue ich mir eine Abbildung oder ein Video an."], ["T", "probiere ich es gleich selbst aus."], ["H", "lasse ich es mir erklären und frage nach."], ["L", "lese ich eine Schritt-für-Schritt-Anleitung."]]], ["Im Unterricht merke ich mir am leichtesten, …", [["H", "was erzählt oder diskutiert wird."], ["S", "was als Bild oder Grafik an der Tafel steht."], ["L", "was ich selbst mitschreibe."], ["T", "was wir praktisch üben."]]], ["Jemand fragt dich nach dem Weg zur Station. Du …", [["L", "schreibst den Weg auf einen Zettel."], ["S", "zeichnest eine kleine Skizze."], ["T", "gehst ein Stück mit."], ["H", "beschreibst ihn genau mit Worten."]]], ["Vor einer Klausur lerne ich am liebsten mit …", [["T", "Übungsaufgaben und Fällen."], ["L", "Zusammenfassungen und Karteikarten mit Text."], ["H", "jemandem, der mich abfragt, oder lautem Erklären."], ["S", "Mind-Maps, Farben und Bildern."]]], ["Auf Station gibt es ein neues Gerät, zum Beispiel ein Blutzuckermessgerät. Du …", [["S", "schaust dir die Bildanleitung an."], ["H", "lässt es dir von einer Kollegin zeigen und erklären."], ["T", "probierst es einfach aus."], ["L", "liest die Gebrauchsanweisung."]]], ["Neue Fachbegriffe merke ich mir, indem ich …", [["L", "sie aufschreibe und eine Definition notiere."], ["T", "sie gleich in der Praxis anwende."], ["S", "mir ein Bild dazu vorstelle oder zeichne."], ["H", "sie laut ausspreche."]]], ["Du kochst ein neues Rezept nach. Am liebsten …", [["H", "erklärt mir jemand, wie es geht."], ["S", "schaue ich ein Foto oder Video."], ["L", "lese ich das Rezept Schritt für Schritt."], ["T", "koche ich nach Gefühl und probiere."]]], ["Bei einer Präsentation hilft mir am meisten …", [["T", "eine Mitmach-Aufgabe."], ["S", "Folien mit guten Bildern."], ["H", "eine lebendige Erzählung."], ["L", "ein Handout zum Nachlesen."]]], ["Wenn ich über etwas nachdenke, …", [["S", "stelle ich mir Bilder vor oder male nebenbei."], ["L", "schreibe ich Stichpunkte."], ["T", "laufe ich herum oder brauche etwas in der Hand."], ["H", "spreche ich mit mir selbst."]]], ["An eine Patientin oder einen Patienten erinnere ich mich zuerst durch …", [["H", "die Stimme und was sie erzählt haben."], ["T", "das, was ich mit ihnen gemacht habe."], ["L", "das, was in der Dokumentation stand."], ["S", "das Gesicht oder das Zimmer."]]], ["In meiner Freizeit mag ich besonders …", [["L", "Bücher, Artikel, Texte."], ["H", "Podcasts, Musik, Telefonieren."], ["S", "Filme, Fotos, Serien."], ["T", "Sport, Kochen, Basteln."]]], ["Am meisten Spaß im Unterricht machen mir …", [["S", "Bilder, Videos und Grafiken."], ["T", "Übungen, Rollenspiele und Bewegung."], ["L", "Texte lesen und schreiben."], ["H", "Gespräche und Diskussionen."]]]];
+const SYM={S:['▲','var(--sky)','Sehen','Bilder, Grafiken, Videos'],H:['●','var(--peach)','Hören','Erklären, Gespräch, Zuhören'],L:['■','var(--lav)','Lesen & Schreiben','Texte, Notizen, Listen'],T:['◆','var(--sage)','Tun','Ausprobieren, Üben, Bewegen']};
+const CKKEY='ll-check-v1';
+let ck={a:CK.map(()=>[]),i:0,open:false};
+try{const s=JSON.parse(localStorage.getItem(CKKEY)||'null');if(s&&Array.isArray(s.a)&&s.a.length===CK.length)ck=s}catch(e){}
+function ckSave(){try{localStorage.setItem(CKKEY,JSON.stringify(ck))}catch(e){}}
+function ckDots(){return`<div class="ck-dots" aria-label="Fortschritt">${CK.map((_,k)=>`<button data-ck="${k}" class="${k===ck.i?'now':ck.a[k].length?'on':''}" aria-label="Situation ${k+1}">${k+1}</button>`).join('')}</div>`}
+function drawCheck(){
+  const box=$('#ck-box');
+  if(ck.i>=CK.length){
+    if(!ck.open){
+      box.innerHTML=ckDots()+`<div class="ck-done"><div class="bigword">Geschafft.</div><p>Die Auswertung öffnest du erst, wenn es im Unterricht dran ist. Bis dahin: Tablet kurz zur Seite legen.</p><div class="row" style="justify-content:center"><button class="btn" id="ck-open">Auswertung öffnen</button><button class="btn ghost" data-ck="0">Antworten ansehen</button></div></div>`;
+      $('#ck-open').onclick=()=>{ck.open=true;ckSave();drawCheck()};
+    } else {
+      const cnt={S:0,H:0,L:0,T:0};ck.a.forEach(x=>x.forEach(k=>cnt[k]++));
+      box.innerHTML=`<h3>Was mag ich beim Lernen?</h3>
+      <div class="ck-res">${Object.entries(SYM).map(([k,s])=>`<div><span class="sym" style="color:${s[1]}">${s[0]}</span><b>${s[2]}</b><span class="note">${s[3]}</span><span class="cnt">${cnt[k]}</span><div class="ck-bar">${Array.from({length:12},(_,j)=>`<i style="${j<cnt[k]?'background:'+s[1]:''}"></i>`).join('')}</div></div>`).join('')}</div>
+      <h3>Was dein Ergebnis bedeutet – und was nicht</h3>
+      <div class="ck-mean">
+        <div style="background:var(--lav-l)"><b style="color:var(--lav)">Was es zeigt</b>Deine Vorlieben: wie du gern lernst. Vorlieben sind echt und dürfen sein. Sie können dir helfen, über dein Lernen nachzudenken.<span class="src">Coffield et al. (2004)</span></div>
+        <div style="background:var(--peach-l)"><b style="color:var(--peach)">Was es nicht zeigt</b>Dass du nur so gut lernst. Wenn Unterricht zum „Lerntyp“ passt, lernen Menschen nicht besser. Das zeigen sorgfältige Studien, auch mit Erwachsenen.<span class="src">Pashler et al. (2008) · Rogowsky et al. (2015)</span></div>
+        <div style="background:var(--sage-l)"><b style="color:var(--sage)">Was allen hilft</b>Wort und Bild verbinden. Aus dem Kopf abrufen. Verteilt wiederholen. Den Stoff so darstellen, wie er es braucht: Anatomie als Bild, Abläufe zum Üben.<span class="src">Mayer (2009) · Dunlosky et al. (2013)</span></div>
+      </div>
+      <h3>Nachgedacht – für dich, gern zu Hause</h3>
+      <ul class="ck-refl"><li>Was überrascht mich an meinem Ergebnis – oder was habe ich erwartet?</li><li>Lerne ich gerade vor allem so, wie ich es <b>mag</b>, oder so, wie es <b>wirkt</b>?</li><li>Welche Station probiere ich in Block 6 aus, obwohl sie <b>nicht</b> zu meiner Vorliebe passt?</li></ul>
+      <p class="src">Ehrlich gesagt: Dieser Check ist selbst gebaut und nicht wissenschaftlich geprüft. Er ist ein Anlass zum Nachdenken, kein Messinstrument.</p>
+      <div class="row"><button class="btn ghost" data-ck="0">Antworten ändern</button><button class="btn ghost" id="ck-del">Alles löschen</button></div>`;
+      $('#ck-del').onclick=()=>{ck={a:CK.map(()=>[]),i:0,open:false};try{localStorage.removeItem(CKKEY)}catch(e){}drawCheck();$('#v-check').scrollIntoView({behavior:'smooth'})};
+    }
+  } else {
+    const [q,opts]=CK[ck.i],sel=ck.a[ck.i];
+    box.innerHTML=ckDots()+`<div class="ck-q"><span class="note">Situation ${ck.i+1} von ${CK.length}</span><h3>${q}</h3></div>
+    <div class="ck-opts">${opts.map(([k,t])=>`<button class="ck-opt" data-k="${k}" aria-pressed="${sel.includes(k)}"><i style="color:${SYM[k][1]}" aria-hidden="true">${SYM[k][0]}</i><span>${t}</span></button>`).join('')}</div>
+    <p class="note">Eine Antwort antippen – passen zwei gleich gut, darfst du zwei wählen.</p>
+    <div class="row"><button class="btn ghost" id="ck-back" ${ck.i?'':'disabled'}>Zurück</button><button class="btn" id="ck-next" ${sel.length?'':'disabled'}>${ck.i<CK.length-1?'Weiter':'Fertig'}</button></div>`;
+    box.querySelectorAll('.ck-opt').forEach(b=>b.onclick=()=>{const k=b.dataset.k,s=ck.a[ck.i],p=s.indexOf(k);if(p>=0)s.splice(p,1);else{s.push(k);if(s.length>2)s.shift()}ckSave();drawCheck()});
+    $('#ck-back').onclick=()=>{ck.i=Math.max(0,ck.i-1);ckSave();drawCheck()};
+    $('#ck-next').onclick=()=>{ck.i++;ckSave();drawCheck();$('#v-check').scrollIntoView({behavior:'smooth',block:'start'})};
+  }
+  box.querySelectorAll('[data-ck]').forEach(b=>b.onclick=()=>{const k=+b.dataset.ck;ck.i=k;ckSave();drawCheck()});
+}
+
+/* ---------- Befundkarten ---------- */
+const BF=[["Befund 1", "Passt Unterricht zum Lerntyp?", "Ein Forschungsteam um <b>Harold Pashler (2008)</b> hat alle Studien geprüft, die testen, ob Menschen besser lernen, wenn der Unterricht zu ihrem bevorzugten Lernstil passt. Ergebnis: Dafür gibt es „virtually no evidence“ – praktisch keine Belege. Einige gut gemachte Studien widersprechen der Annahme sogar direkt.", "Was heißt das für die Aussage „Ich lerne nur visuell gut“?"], ["Befund 2", "Warum glauben so viele daran?", "<b>Philip Newton und Atharva Salvi (2020)</b> haben Befragungen von Lehrenden aus vielen Ländern ausgewertet. Rund 89 % der Lehrenden glauben, dass Unterricht zum Lerntyp passen sollte. Dieser Glaube ist in den letzten Jahren nicht zurückgegangen.", "Warum hält sich eine Idee, die nicht belegt ist? Was macht sie so überzeugend?"], ["Befund 3", "Wofür sind Lernstil-Tests gut?", "Ein Team um <b>Frank Coffield (2004)</b> hat 13 bekannte Lernstil-Modelle untersucht. Viele messen unzuverlässig: Wer den Test zweimal macht, bekommt oft ein anderes Ergebnis. Für den Unterricht bringen sie kaum etwas. Manche können aber helfen, über das eigene Lernen nachzudenken.", "Wofür kann dein Lernvorlieben-Check trotzdem gut sein?"], ["Befund 4", "Hörbuch oder Text?", "<b>Beth Rogowsky und Kolleginnen (2015)</b> haben Erwachsene gefragt, ob sie lieber hören oder lesen. Dann lernten alle einen Text – mal als Hörbuch, mal als E-Text. Ergebnis: Wer gern hört, verstand das Hörbuch nicht besser. Wer gern liest, verstand den E-Text nicht besser als die anderen.", "Was bedeutet das für deine Klausurvorbereitung?"]];
+$('#bf-seg').innerHTML=BF.map((b,i)=>`<button data-bf="${i}" aria-pressed="${i===0}">Befund ${i+1}</button>`).join('');
+function drawBf(i){const b=BF[i];$('#bf-card').innerHTML=`<div class="bf-card"><span class="lab">${b[0]}</span><h3>${b[1]}</h3><p>${b[2]}</p><div class="lq"><b>Eure Frage:</b> ${b[3]}</div></div>`;document.querySelectorAll('[data-bf]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.bf===i))}
+document.querySelectorAll('[data-bf]').forEach(x=>x.onclick=()=>drawBf(+x.dataset.bf));drawBf(0);
 
 go(location.hash.slice(1)||'merktest');
 
